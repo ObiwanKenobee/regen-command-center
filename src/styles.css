@@ -4,28 +4,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
- */
-
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -45,7 +29,6 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-ring-offset-background: var(--background);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -59,86 +42,139 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-gold: var(--gold);
+  --color-eco-blue: var(--eco-blue);
+  --color-forest: var(--forest);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
 }
 
+/* Atlas Sanctum — Regenerative Finance OS */
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --radius: 0.75rem;
+
+  /* obsidian + deep forest base */
+  --background: oklch(0.18 0.018 160);
+  --foreground: oklch(0.96 0.01 100);
+
+  --card: oklch(0.22 0.02 165 / 70%);
+  --card-foreground: oklch(0.96 0.01 100);
+  --popover: oklch(0.22 0.025 165);
+  --popover-foreground: oklch(0.96 0.01 100);
+
+  /* deep forest green */
+  --primary: oklch(0.55 0.13 155);
+  --primary-foreground: oklch(0.12 0.02 160);
+
+  --secondary: oklch(0.27 0.025 170);
+  --secondary-foreground: oklch(0.96 0.01 100);
+
+  --muted: oklch(0.26 0.02 170);
+  --muted-foreground: oklch(0.72 0.025 150);
+
+  /* sand / gold accent */
+  --accent: oklch(0.78 0.13 85);
+  --accent-foreground: oklch(0.16 0.02 160);
+
+  --destructive: oklch(0.62 0.22 28);
+  --destructive-foreground: oklch(0.98 0 0);
+
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.65 0.13 155);
+
+  --gold: oklch(0.78 0.13 85);
+  --eco-blue: oklch(0.68 0.11 220);
+  --forest: oklch(0.42 0.1 155);
+  --success: oklch(0.7 0.16 150);
+  --warning: oklch(0.78 0.16 70);
+
+  --chart-1: oklch(0.65 0.15 155);
+  --chart-2: oklch(0.78 0.13 85);
+  --chart-3: oklch(0.68 0.11 220);
+  --chart-4: oklch(0.72 0.18 35);
+  --chart-5: oklch(0.6 0.18 300);
+
+  --sidebar: oklch(0.15 0.02 165 / 90%);
+  --sidebar-foreground: oklch(0.92 0.01 100);
+  --sidebar-primary: oklch(0.55 0.13 155);
+  --sidebar-primary-foreground: oklch(0.12 0.02 160);
+  --sidebar-accent: oklch(0.25 0.025 170);
+  --sidebar-accent-foreground: oklch(0.96 0.01 100);
+  --sidebar-border: oklch(1 0 0 / 6%);
+  --sidebar-ring: oklch(0.55 0.13 155);
+
+  /* gradients & shadows */
+  --gradient-aurora: radial-gradient(ellipse at top left, oklch(0.45 0.13 155 / 35%), transparent 60%),
+                     radial-gradient(ellipse at bottom right, oklch(0.55 0.11 220 / 25%), transparent 55%),
+                     radial-gradient(ellipse at center, oklch(0.78 0.13 85 / 10%), transparent 70%);
+  --gradient-forest: linear-gradient(135deg, oklch(0.42 0.1 155), oklch(0.55 0.13 155));
+  --gradient-gold: linear-gradient(135deg, oklch(0.78 0.13 85), oklch(0.68 0.16 60));
+  --shadow-glow: 0 0 40px -10px oklch(0.55 0.13 155 / 40%);
+  --shadow-elevated: 0 20px 50px -20px oklch(0 0 0 / 60%);
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --background: oklch(0.18 0.018 160);
+  --foreground: oklch(0.96 0.01 100);
 }
 
 @layer base {
   * {
     border-color: var(--color-border);
   }
-
+  html, body, #root {
+    min-height: 100vh;
+  }
   body {
-    background-color: var(--color-background);
+    background: var(--gradient-aurora), var(--background);
+    background-attachment: fixed;
     color: var(--color-foreground);
+    font-feature-settings: "ss01", "cv11";
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: color-mix(in oklab, var(--card) 70%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid var(--border);
+  }
+  .glass-strong {
+    background: color-mix(in oklab, var(--card) 88%, transparent);
+    backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid var(--border);
+  }
+  .text-gradient-gold {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-gradient-forest {
+    background: linear-gradient(135deg, oklch(0.78 0.14 150), oklch(0.7 0.16 95));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .glow-primary { box-shadow: var(--shadow-glow); }
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, oklch(1 0 0 / 4%) 1px, transparent 1px),
+      linear-gradient(to bottom, oklch(1 0 0 / 4%) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .ticker-mask {
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+  .pulse-dot {
+    box-shadow: 0 0 0 0 currentColor;
+    animation: pulseDot 2s infinite;
+  }
+  @keyframes pulseDot {
+    0% { box-shadow: 0 0 0 0 color-mix(in oklab, currentColor 60%, transparent); }
+    70% { box-shadow: 0 0 0 10px transparent; }
+    100% { box-shadow: 0 0 0 0 transparent; }
   }
 }
